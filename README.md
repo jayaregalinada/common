@@ -15,7 +15,7 @@ PSRs you support to avoid any confusion with users and contributors.
 Via Composer
 
 ``` bash
-$ composer require jag/Common
+$ composer require jag/common
 ```
 
 ## Change log

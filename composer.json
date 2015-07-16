@@ -1,5 +1,5 @@
 {
-    "name": "Jag/Common",
+    "name": "jag/common",
     "description": "Common resources like classes, helpers, traits and more",
     "keywords": [
         "jayaregalinada",
@@ -36,12 +36,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Jag\\Common\\": "src"
+            "Jag\\Common\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Jag\\Common\\Test\\": "tests"
+            "Jag\\Common\\Test\\": "tests/"
         }
     },
     "scripts": {
