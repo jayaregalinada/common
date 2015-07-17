@@ -1,12 +1,8 @@
-# Common
+# Jag\Common
 
 [![Author](http://img.shields.io/badge/author-@jayaregalinada-blue.svg?style=flat-square)](https://github.com/jayaregalinada)
-[![Latest Version on Packagist][ico-version]](https://packagist.org/packages/jag/common)
+[![Packagist Version](https://img.shields.io/packagist/v/jag/common.svg?style=flat-square)](https://packagist.org/packages/jag/common)
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![Total Downloads][ico-downloads]][link-downloads]
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
 PSRs you support to avoid any confusion with users and contributors.
@@ -29,8 +25,7 @@ If you discover any security related issues, please email jayaregalinada@gmail.c
 
 ## Credits
 
-- [Jay Are Galinada][https://github.com/jayaregalinada]
-- [All Contributors][link-contributors]
+- [Jay Are Galinada](https://github.com/jayaregalinada)
 
 ## License
 
