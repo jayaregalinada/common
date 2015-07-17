@@ -26,7 +26,7 @@
         "jeroen-g/laravel-packager": "^0.2.1",
         "barryvdh/laravel-ide-helper": "~2.0",
         "doctrine/dbal": "~2.3",
-        "orangehill/iseed": "dev-master",
+        "orangehill/iseed": "~2",
         "filp/whoops": "~1.1",
         "itsgoingd/clockwork": "~1.7"
     },
