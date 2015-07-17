@@ -23,7 +23,6 @@
         "intervention/image": "~2.1",
         "illuminate/html": "5.*",
         "zizaco/entrust": "~1.4",
-        "scrutinizer/ocular": "~1.1",
         "jeroen-g/laravel-packager": "^0.2.1",
         "barryvdh/laravel-ide-helper": "~2.0",
         "doctrine/dbal": "~2.3",
