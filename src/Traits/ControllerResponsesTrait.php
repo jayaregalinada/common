@@ -4,7 +4,7 @@ namespace Jag\Common\Traits;
 
 use Request;
 
-class ControllerResponsesTrait
+trait ControllerResponsesTrait
 {
     /**
      * @param        $data
