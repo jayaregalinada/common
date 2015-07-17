@@ -1,6 +1,7 @@
 # Common
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Author](http://img.shields.io/badge/author-@jayaregalinada-blue.svg?style=flat-square)](https://github.com/jayaregalinada)
+[![Latest Version on Packagist][ico-version]](https://packagist.org/packages/jag/common)
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
