@@ -10,12 +10,12 @@ class Option extends Model
     /**
      * @type array
      */
-    protected $fillable = ['type', 'key', 'value'];
+    protected $fillable = [ 'type', 'key', 'value' ];
 
     /**
      * @type array
      */
-    protected $hidden = ['updated_at', 'created_at'];
+    protected $hidden = [ 'updated_at', 'created_at' ];
 
     /**
      * @param $value
@@ -24,10 +24,10 @@ class Option extends Model
      */
     public function setValueAttribute($value)
     {
-        if(is_null($value)) {
-            return $this->attributes['value'] = null;
+        if (is_null($value)) {
+            return $this->whereId($this->id)->delete();
         } else {
-            return $this->attributes['value'] = base64_encode(serialize($value));
+            return $this->attributes['value'] = serialize($value);
         }
     }
 
@@ -38,11 +38,11 @@ class Option extends Model
      */
     public function getValueAttribute($value)
     {
-        if(is_null($value)) {
+        if (is_null($value)) {
             return null;
         }
-        $value = unserialize(base64_decode($value));
-        if(is_array(json_decode($value))) {
+        $value = unserialize($value);
+        if (is_array(json_decode($value))) {
             return json_decode($value);
         }
 
@@ -58,25 +58,24 @@ class Option extends Model
      */
     public function scopeGetValue($query, $key, $default = null)
     {
-        if(!is_null($default)) {
+        if (! is_null($default)) {
             $find = $query->whereKey($key);
-            if(!$find->exists()) {
+            if (! $find->exists()) {
                 return $default;
             } else {
                 return $find->first();
             }
-        }
-        else {
-            throw new \Exception('No key exists, ' . $key);
+        } else {
+            throw new \Exception('No option exists, ' . $key);
         }
     }
 
     /**
      * Option::set('key', 'value', 'type[config]')
      *
-     * @param  $query
-     * @param  $key   Option key
-     * @param  $value Option value
+     * @param         $query
+     * @param         $key   Option key
+     * @param         $value Option value
      * @param  string $type  Type of the option
      *
      * @return static
@@ -84,14 +83,14 @@ class Option extends Model
     public function scopeSet($query, $key, $value)
     {
         return $this->updateOrCreate(
-        [
-            'type' => 'config',
-            'key' => $key,
-        ],
-        [
-            'key' => $key,
-            'value' => $value
-        ]);
+            [
+                'type' => 'config',
+                'key'  => $key,
+            ],
+            [
+                'key'   => $key,
+                'value' => $value
+            ]);
     }
 
 }

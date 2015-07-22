@@ -27,7 +27,7 @@ class OptionServiceProvider extends ServiceProvider
      */
     protected function getTimestampMigrationName()
     {
-        if(!Cache::has(static::CACHENAME)) {
+        if (! Cache::has(static::CACHENAME)) {
             Cache::forever(static::CACHENAME, date('Y_m_d_His') . '_' . $this->getMigrationName());
         }
 
@@ -42,7 +42,7 @@ class OptionServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__. '/../database/migrations/'. $this->getMigrationName() .'.php' => database_path('migrations/' . $this->getTimestampMigrationName() .'.php')
+            __DIR__ . '/../database/migrations/' . $this->getMigrationName() . '.php' => database_path('migrations/' . $this->getTimestampMigrationName() . '.php')
         ], 'migrations');
     }
 
@@ -54,15 +54,18 @@ class OptionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        config( $this->getDatabaseConfig() );
+        config($this->getDatabaseConfig());
     }
 
+    /**
+     * @return array
+     */
     public function getDatabaseConfig()
     {
-        if(Schema::hasTable('options')) {
+        if (Schema::hasTable('options')) {
             $table = $this->app['db']->table('options');
 
-            return $this->changeConfigWithHelpers( $table->where( 'type', 'config' )->lists( 'value', 'key' ) );
+            return $this->changeConfigWithHelpers($table->where('type', 'config')->lists('value', 'key'));
         }
     }
 
@@ -71,10 +74,10 @@ class OptionServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    private function changeConfigWithHelpers( array $config )
+    private function changeConfigWithHelpers(array $config)
     {
-        foreach( $config as $key => $value ) {
-            $config[ $key ] = ( empty( trim( unserialize( base64_decode( $value ) ) ) ) ? config( $key ) : $this->replaceHelpers( unserialize( base64_decode( $value ) ) ) );
+        foreach ($config as $key => $value) {
+            $config[$key] = ( ( trim(unserialize($value)) == false ) ? config($key) : $this->replaceHelpers(unserialize($value)) );
         }
 
         return $config;
@@ -92,7 +95,7 @@ class OptionServiceProvider extends ServiceProvider
             '__YEAR__'  => date('Y'),
         ];
 
-        return str_replace(array_keys( $helper ), array_values( $helper ), $string);
+        return str_replace(array_keys($helper), array_values($helper), $string);
     }
 
 }
