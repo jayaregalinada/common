@@ -47,6 +47,14 @@ $ composer require jag/common
 
 ## Post Install
 
+After the installation complete, run
+
+``` bash
+$ php artisan vendor:publish
+```
+
+Configurations from `clockwork`, `ide-helper`, `image`, `imagecache`, and `entrust` generated. A `users` migration will also be generated.
+
 ##### IDE Helper
 
 After installing/updating composer, you can now re-generate the docs yourself
@@ -59,13 +67,13 @@ You can read the full documentation of [this package](https://github.com/barryvd
 
 ##### Option Service Provider
 
-If you want to include the Option Service, add the service provider to the `provider` array in `config/app.app`
+If you want to include the Option Service, add the service provider to the `$provider` array in `config/app.app`
 
 ```
 'Jag\Common\OptionServiceProvider'
 ```
 
-After that, run the migrations. This will create a migration.
+After that, publish the migrations.
 
 ``` bash
 $ php artisan vendor:publish --provider="Jag\Common\OptionServiceProvider"
