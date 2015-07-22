@@ -16,6 +16,8 @@ Option service are not included out-of-the-box, instead add its service provider
 - [Post Install](#post-install)
  - [IDE Helper](#ide-helper)
  - [Option Service Provider](#option-service-provider)
+ - [Clockwork Middleware](#clockwork-middleware)
+ - [How to use Laravel Packager](#how-to-use-laravel-packager)
 - [Optional Facade](#optional-facade)
 - [Change Log](#change-log)
 - [Security](#security)
@@ -29,7 +31,10 @@ Option service are not included out-of-the-box, instead add its service provider
 - [Image(Cache)](https://github.com/Intervention/imagecache) - Caching extension for the Intervention Image Class
 - [Html/Form](https://github.com/illuminate/html) - Illuminate HTML component
 - [Entrust](https://github.com/Zizaco/entrust) - Role-based Permissions
-- [HTML Sanitizer](mailto:zefredz@gmail.com)- HTML Sanitizer.
+- [HTML Sanitizer](mailto:zefredz@gmail.com)- HTML Sanitizer
+- [iSeed](https://github.com/orangehill/iseed) - Inverse seed generator
+- [Whoops](https://github.com/filp/whoops) - PHP errors for cool kids
+- [Clockwork](https://github.com/itsgoingd/clockwork) - Chrome extension for PHP development
 
 
 ## Install
@@ -47,7 +52,7 @@ $ composer require jag/common
 After installing/updating composer, you can now re-generate the docs yourself
 
 ``` bash
-php artisan ide-helper:generate
+$ php artisan ide-helper:generate
 ```
 
 You can read the full documentation of [this package](https://github.com/barryvdh/laravel-ide-helper)
@@ -60,12 +65,35 @@ If you want to include the Option Service, add the service provider to the `prov
 'Jag\Common\OptionServiceProvider'
 ```
 
+After that, run the migrations. This will create a migration.
+
+``` bash
+$ php artisan vendor:publish --provider="Jag\Common\OptionServiceProvider"
+```
+
+##### Clockwork Middleware
+
+You need to add Clockwork middleware, in your `app/Http/Kernel.php`
+
+``` php
+protected $middleware = [
+    'Clockwork\Support\Laravel\ClockworkMiddleware',
+    ...
+]
+```
+
+##### How to use Laravel Packager
+
+This package provides you with a simple tool to set up a new packages. Nothing more, nothing less. Read more of its documentation [here](https://github.com/Jeroen-G/laravel-packager).
+
+However, an [article](https://medium.com/@tabacitu/creating-laravel-5-packages-for-dummies-ec6a4ded2e93) teaches you to how to create packages.
+
 ## Optional Facade
 
-Edit and Add your `config\app.php` at `aliases` array key with
+Edit and Add your `config\app.php` at `$aliases` array
 ``` php
 'aliases' => [
-    ...,
+    ...
     'Socialite' => 'Laravel\Socialite\Facades\Socialite',
     'Image'     => 'Intervention\Image\Facades\Image',
     'Html'      => 'Illuminate\Html\HtmlFacade',
