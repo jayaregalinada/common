@@ -47,7 +47,7 @@ class CommonServiceProvider extends ServiceProvider
      */
     protected function getTimestampMigrationName()
     {
-        if(!Cache::has(static::CACHENAME)) {
+        if (! Cache::has(static::CACHENAME)) {
             Cache::forever(static::CACHENAME, date('Y_m_d_His') . '_' . $this->getMigrationName());
         }
 
@@ -62,7 +62,7 @@ class CommonServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__. '/../database/migrations/'. $this->getMigrationName() .'.php' => database_path('migrations/' . $this->getTimestampMigrationName() .'.php')
+            __DIR__ . '/../database/migrations/' . $this->getMigrationName() . '.php' => database_path('migrations/' . $this->getTimestampMigrationName() . '.php')
         ], 'migrations');
     }
 
@@ -74,7 +74,7 @@ class CommonServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__. '/../config/app.php', 'app'
+            __DIR__ . '/../config/app.php', 'app'
         );
         $this->registerOtherProviders();
     }

@@ -6,6 +6,7 @@ use Request;
 
 trait ControllerResponsesTrait
 {
+
     /**
      * @param        $data
      * @param int    $statusCode
@@ -13,12 +14,13 @@ trait ControllerResponsesTrait
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function responseInJson( $data, $statusCode = 200, $callback = 'callback' )
+    public function responseInJson($data, $statusCode = 200, $callback = 'callback')
     {
-        if( Request::ajax() || Request::wantsJson() )
-            return response()->jsonp( Request::input( $callback ), $data, $statusCode );
+        if (Request::ajax() || Request::wantsJson()) {
+            return response()->jsonp(Request::input($callback), $data, $statusCode);
+        }
 
-        return response( $data, $statusCode );
+        return response($data, $statusCode);
     }
 
     /**
@@ -29,13 +31,15 @@ trait ControllerResponsesTrait
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function responseSuccess( $message = '', $data = [ ], $statusCode = 200, $callback = 'callback' )
+    public function responseSuccess($message = '', $data = [ ], $statusCode = 200, $callback = 'callback')
     {
-        return $this->responseInJson( [ 'success' => [
-            'title' => 'Success!',
-            'message' => $message,
-            'data' => $data
-        ] ], $statusCode, $callback );
+        return $this->responseInJson([
+            'success' => [
+                'title'   => 'Success!',
+                'message' => $message,
+                'data'    => $data
+            ]
+        ], $statusCode, $callback);
     }
 
     /**
@@ -46,9 +50,9 @@ trait ControllerResponsesTrait
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function responseInSuccess( $message = '', $data = [ ], $statusCode = 200, $callback = 'callback' )
+    public function responseInSuccess($message = '', $data = [ ], $statusCode = 200, $callback = 'callback')
     {
-        return $this->responseSuccess( $message, $data, $statusCode, $callback );
+        return $this->responseSuccess($message, $data, $statusCode, $callback);
     }
 
     /**
@@ -59,13 +63,15 @@ trait ControllerResponsesTrait
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function responseError( $message = '', $data = [ ], $statusCode = 404, $callback = 'callback' )
+    public function responseError($message = '', $data = [ ], $statusCode = 404, $callback = 'callback')
     {
-        return $this->responseInJson( [ 'error' => [
-            'title' => 'Opps!',
-            'message' => $message,
-            'data' => $data
-        ] ], $statusCode, $callback );
+        return $this->responseInJson([
+            'error' => [
+                'title'   => 'Opps!',
+                'message' => $message,
+                'data'    => $data
+            ]
+        ], $statusCode, $callback);
     }
 
     /**
@@ -76,9 +82,9 @@ trait ControllerResponsesTrait
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function responseInError( $message = '', $data = [ ], $statusCode = 404, $callback = 'callback' )
+    public function responseInError($message = '', $data = [ ], $statusCode = 404, $callback = 'callback')
     {
-        return $this->responseError( $message, $data, $statusCode, $callback );
+        return $this->responseError($message, $data, $statusCode, $callback);
     }
 
 }

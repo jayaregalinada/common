@@ -20,13 +20,13 @@ interface HTMLSanitizerInterface
      *
      * @return mixed
      */
-    public function addAdditionalTags( $tags );
+    public function addAdditionalTags($tags);
 
     /**
      * @param $html
      *
      * @return mixed
      */
-    public function sanitize( $html );
+    public function sanitize($html);
 
 }

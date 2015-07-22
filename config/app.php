@@ -15,7 +15,10 @@ return [
         'name' => 'Application Owner Name',
         'email' => 'application@owner.email',
     ],
-
+    
+    /**
+     * Application address
+     */
     'address' => 'Application Address',
 
 ];
