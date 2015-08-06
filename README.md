@@ -17,7 +17,6 @@ Option service are not included out-of-the-box, instead add its service provider
  - [IDE Helper](#ide-helper)
  - [Option Service Provider](#option-service-provider)
  - [Clockwork Middleware](#clockwork-middleware)
- - [How to use Laravel Packager](#how-to-use-laravel-packager)
 - [Optional Facade](#optional-facade)
 - [Change Log](#change-log)
 - [Security](#security)
@@ -47,13 +46,19 @@ $ composer require jag/common
 
 ## Post Install
 
-After the installation complete, run
+After the installation/update completed, add the service provider to the `$provider` array in `config/app.app`
+
+```
+'Jag\Common\CommonServiceProvider'
+```
+
+After that, run
 
 ``` bash
 $ php artisan vendor:publish
 ```
 
-Configurations from `clockwork`, `ide-helper`, `image`, `imagecache`, and `entrust` generated. A `users` migration will also be generated.
+Configurations from `clockwork`, `ide-helper`, `image`, `imagecache`, and `entrust` generated. Also, `users` migration will be generated.
 
 ##### IDE Helper
 
@@ -90,12 +95,6 @@ protected $middleware = [
 ]
 ```
 
-##### How to use Laravel Packager
-
-This package provides you with a simple tool to set up a new packages. Nothing more, nothing less. Read more of its documentation [here](https://github.com/Jeroen-G/laravel-packager).
-
-However, an [article](https://medium.com/@tabacitu/creating-laravel-5-packages-for-dummies-ec6a4ded2e93) teaches you to how to create packages.
-
 ## Optional Facade
 
 Edit and Add your `config\app.php` at `$aliases` array
@@ -109,7 +108,7 @@ Edit and Add your `config\app.php` at `$aliases` array
     'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
 ],
 ```
-You can also use the class name resolution via [`::class`](http://php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class) specially for `PHP => 5.5` and `Laravel ~5.1`
+You can also use the class name resolution via [`::class`](http://php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class) specially for `PHP >= 5.5` and `Laravel ~5.1`
 
 ## Change Log
 
