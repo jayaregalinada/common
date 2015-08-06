@@ -30,8 +30,7 @@ class CommonServiceProvider extends ServiceProvider
         'Illuminate\Html\HtmlServiceProvider',
         'Orangehill\Iseed\IseedServiceProvider',
         'Clockwork\Support\Laravel\ClockworkServiceProvider',
-        'Zizaco\Entrust\EntrustServiceProvider',
-        'JeroenG\Packager\PackagerServiceProvider',
+        'Zizaco\Entrust\EntrustServiceProvider'
     ];
 
     /**
