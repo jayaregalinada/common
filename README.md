@@ -4,10 +4,13 @@
 [![Packagist Version](https://img.shields.io/packagist/v/jag/common.svg?style=flat-square)](https://packagist.org/packages/jag/common)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Laravel](http://img.shields.io/badge/Laravel-~5-orange.svg?style=flat-square)](http://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-~5.5-blue.svg?style=flat-square)](http://php.net)
 
 Nah, some boilerplate here. All included packages service provider are already registered.
 
 Option service are not included out-of-the-box, instead add its service provider. See [below](#option-service-provider) for instruction.
+
+[Laravel Packager](https://github.com/Jeroen-G/laravel-packager) are not included out-of-the-box (updated since 1.0.2). See [below](#how-to-use-laravel-packager) for instruction
 
 ## Table of Contents
 
@@ -17,7 +20,10 @@ Option service are not included out-of-the-box, instead add its service provider
  - [IDE Helper](#ide-helper)
  - [Option Service Provider](#option-service-provider)
  - [Clockwork Middleware](#clockwork-middleware)
+ - [How to use Laravel Packager](#how-to-use-laravel-packager)
 - [Optional Facade](#optional-facade)
+- [Extend Exception Handler](#extend-exception-handler)
+- [JSON Controller Response Trait](#json-controller-response-trait)
 - [Change Log](#change-log)
 - [Security](#security)
 - [Credits](#credits)
@@ -95,9 +101,24 @@ protected $middleware = [
 ]
 ```
 
+##### How to use Laravel Packager
+
+__NOTE: This is for developing Laravel packages but only works for Laravel `~5.1`.__
+
+If you are using Laravel `~5.1` add the service provider in `config/app.php`
+
+```
+'JeroenG\Packager\PackagerServiceProvider',
+```
+
+This package provides you with a simple tool to set up a new packages. Nothing more, nothing less. Read more of its documentation [here](https://github.com/Jeroen-G/laravel-packager).
+
+However, an [article](https://medium.com/@tabacitu/creating-laravel-5-packages-for-dummies-ec6a4ded2e93) teaches you to how to create packages.
+
+
 ## Optional Facade
 
-Edit and Add your `config\app.php` at `$aliases` array
+Edit and Add your `config/app.php` at `$aliases` array
 ``` php
 'aliases' => [
     ...
@@ -108,7 +129,15 @@ Edit and Add your `config\app.php` at `$aliases` array
     'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
 ],
 ```
-You can also use the class name resolution via [`::class`](http://php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class) specially for `PHP >= 5.5` and `Laravel ~5.1`
+You can also use the class name resolution via [`::class`](http://php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
+
+## Extend Exception Handler
+
+You can use the Exception handler specially for developing. This includes the [Whoops](https://github.com/filp/whoops). You can extend your `app/Exceptions/Handler.php` with `Jag\Common\Exceptions\Handler`.
+
+## JSON Controller Response Trait
+
+For easy JSON response on your Controller, just included the trait `Jag\Common\Traits\ControllerResponsesTrait` to your `app/Http/Controllers/Controller.php`.
 
 ## Change Log
 

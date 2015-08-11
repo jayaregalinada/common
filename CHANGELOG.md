@@ -2,6 +2,17 @@
 
 All Notable changes to `common` will be documented in this file
 
+## [1.0.2] - 2015-08-11
+### Added
+- Reinclude `jeroen-g/laravel-packager` package but optional.
+- Include `illuminate/http` package.
+
+### Changed
+- Update the README documentation.
+
+### Fixed
+- Fix the `src/Exception/Handler.php`.
+
 ## [1.0.1] - 2015-08-06
 ### Changed
 - Update the README documentation
