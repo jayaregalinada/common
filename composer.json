@@ -15,7 +15,8 @@
         "image",
         "imagecache",
         "whoops",
-        "options"
+        "options",
+        "laravel-packager"
     ],
     "homepage": "https://github.com/jayaregalinada/common.git",
     "license": "MIT",
@@ -33,14 +34,16 @@
         "filp/whoops": "~1.1",
         "illuminate/database": "~5",
         "illuminate/html": "~5",
+        "illuminate/http": "~5",
         "illuminate/support": "~5",
         "intervention/image": "~2.1",
         "intervention/imagecache": "~2.1",
         "itsgoingd/clockwork": "~1.7",
         "laravel/socialite": "~2.0",
         "orangehill/iseed": "~2",
-        "php": "~5.5",
-        "zizaco/entrust": "~1.4"
+        "php": ">=5.5.0",
+        "zizaco/entrust": "~1.4",
+        "jeroen-g/laravel-packager": "^0.2.1"
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*"
